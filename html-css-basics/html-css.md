@@ -1519,6 +1519,15 @@ experiments: this adds two shadows, notice the comma:
 <img src="https://www.dropbox.com/s/80hfxa4hz5t9507/Screenshot%202018-04-30%2015.07.27.png?raw=1" width="400">
 the three numbers are x offset, y offset, and the blur radius. 不知道什么意思; 
 
+> If you want your bootstrap styled website to be responsive on mobile then be sure to add the following meta tag to your <head>  element, above the <title>  tag:  
+> ```html
+> <meta name="viewport" content="width=device-width, initial-scale=1">  
+> ```
+> As a side note, if you can't get the <hr> element to appear correctly on mobile devices then see [here](https://www.udemy.com/the-web-developer-bootcamp/learn/v4/questions/3416722) for a fix.  
+
+## HTML/CSS finishes for now
+### lec85,
+
 
 
 
