@@ -778,13 +778,13 @@ using class to manipulate css is also separation of concerns: css manages the st
 test your results this way. you can see the item's class list changing dynamically as a response of your events. 
 
 ### lec164, 165, 166, 167
-<img src="https://www.dropbox.com/s/73ag44xmqgl9w43/Screenshot%202018-05-01%2013.44.39.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/73ag44xmqgl9w43/Screenshot%202018-05-01%2013.44.39.png?raw=1" width="400">
 count the number of even entries listed in the page. this is just selecting elements and counting. experiment with console first. first, find out how many tables there are:
-<img src="https://www.dropbox.com/s/m1eemsgtmamg4cs/Screenshot%202018-05-01%2013.45.16.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/m1eemsgtmamg4cs/Screenshot%202018-05-01%2013.45.16.png?raw=1" width="400">
 and figure out which of these tables you want. now we are sure that we want all `tr`s in all `table`s, so do:
-<img src="https://www.dropbox.com/s/u6k3rkuzrfx6qlb/Screenshot%202018-05-01%2013.46.02.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/u6k3rkuzrfx6qlb/Screenshot%202018-05-01%2013.46.02.png?raw=1" width="400">
 we have to exclude the `tr` for table headers. 
-<img src="https://www.dropbox.com/s/83v3a9o8wirjnkg/Screenshot%202018-05-01%2013.47.45.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/83v3a9o8wirjnkg/Screenshot%202018-05-01%2013.47.45.png?raw=1" width="400">
 
 > If you complete the exercise, but your color choice shows "Wrong" even when it is correct, then take a look at your colors array and make sure that the colors have spaces after the commas in the RGB expression, otherwise the picked color will not match the randomly selected color.
 
@@ -800,7 +800,7 @@ this is fun: https://stackoverflow.com/questions/5657964/css-why-doesn-t-percent
 ### lec168, 169, 170, 171
 [colorGame.html](colorGame.html), [colorGame.css](colorGame.css), [colorGame.js](colorGame.js)
 
-<img src="https://www.dropbox.com/s/mb2hxt6f2lhir1q/Screenshot%202018-05-01%2014.02.19.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/mb2hxt6f2lhir1q/Screenshot%202018-05-01%2014.02.19.png?raw=1" width="400">
 所以这里是介绍了这两个的区别, 这个也是我之前一直疑惑的一个东西: 看起来一样的效果不过老师一会儿用这个一会儿用那个;
 
 井号“#”的术语是“octothorpe”. 
@@ -809,7 +809,7 @@ this is fun: https://stackoverflow.com/questions/5657964/css-why-doesn-t-percent
 ```
 note this does not go against the use class list idiom: `textContent` is not the same as style properties, and direct manipulate is accepted;   
 similarly random:
-<img src="https://www.dropbox.com/s/m7bk4id6m5pfep3/Screenshot%202018-05-01%2014.17.23.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/m7bk4id6m5pfep3/Screenshot%202018-05-01%2014.17.23.png?raw=1" width="400">
 
 ```js
 function randomColor(){
@@ -823,7 +823,7 @@ function randomColor(){
 }
 ```
 note how everything is string here with js. 
-<img src="https://www.dropbox.com/s/ylz56vi0i0ft33o/Screenshot%202018-05-01%2014.28.19.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/ylz56vi0i0ft33o/Screenshot%202018-05-01%2014.28.19.png?raw=1" width="400">
 这里好像就是之前为什么强调一定要有空格: 因为最后当我们set之后, DOM css自动就给这个`rgb`加了空格; 所以我们自己写的时候也要这样做, 因为我们有一个和他进行比较的过程:
 ```js
         squares[i].addEventListener("click", function(){
@@ -843,14 +843,14 @@ note how everything is string here with js.
 ```
 这里这个`this.style.background`返回来的自动就是有空格的版本, 所以你和他比较的时候要对应. 为了统一, 所以自己最后写这些string的时候, 就最好还是注意和这些标准进行统一对应. 
 
-<img src="https://www.dropbox.com/s/77a73ggae7ixpu3/Screenshot%202018-05-01%2014.34.03.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/77a73ggae7ixpu3/Screenshot%202018-05-01%2014.34.03.png?raw=1" width="400">
 this won't set all text in the color to white, as you would expect: after all we are selecting an id already, how specific need be? 
-<img src="https://www.dropbox.com/s/p2e6b8qllk0bhfm/Screenshot%202018-05-01%2014.34.52.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/p2e6b8qllk0bhfm/Screenshot%202018-05-01%2014.34.52.png?raw=1" width="400">
 this is because the id only gets you to the parent. but the `span` above actually targets the *message* directly, within the `span`, thus more specific. 
 
 ### lec172, 173
 easy和hard两个按钮的状态互动, 他一开始用这个简单的做法: 
-<img src="https://www.dropbox.com/s/adeu0t0v6ywurdk/Screenshot%202018-05-01%2014.51.21.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/adeu0t0v6ywurdk/Screenshot%202018-05-01%2014.51.21.png?raw=1" width="400">
 这个也不错; 当然最后的逻辑实现是挺丑的: 
 ```js
 function setupModeButtons(){
@@ -866,10 +866,10 @@ function setupModeButtons(){
 }
 ```
 还需要对button的text进行一个比较; 太想要用generic的方式处理所有的button, 最后得到的代码反而有点不伦不类; 
-<img src="https://www.dropbox.com/s/5q98v66exxx9e7j/Screenshot%202018-05-01%2014.55.44.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/5q98v66exxx9e7j/Screenshot%202018-05-01%2014.55.44.png?raw=1" width="400">
 use `display` property. 另外注意这里一个问题, 最后因为要区分两个mode, 如果是easy, 只要三个格子, 如果是hard, 就要6个格子. 他最后并没有在HTML上面对这两行进行区分, 而是还是整个当成一个长度为6的list在js里面拿到手, 然后自己循环处理的时候去区分. 这样的一个决定是不是最好的呢? 还不好说; 不过因为js本身自由度比较高, 他把这种各种各样的逻辑更加优先在js里面实现, 也是说得过去的; 
 
-<img src="https://www.dropbox.com/s/463k20zi4un9924/Screenshot%202018-05-01%2015.09.29.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/463k20zi4un9924/Screenshot%202018-05-01%2015.09.29.png?raw=1" width="400">
 the little black margin on the sides of `h1` is actually coming from the `body` (it does not get as closesly possible with the container: the window), rather than the `h1` itself: we already fixed that.  
 ```css
 body {
@@ -908,7 +908,7 @@ this is for browser compatibility, nothing different in functionality. `transiti
 
 ### lec174, 175
 get rid of this:
-<img src="https://www.dropbox.com/s/4w5fdcnsvjpdx1p/Screenshot%202018-05-01%2015.25.38.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/4w5fdcnsvjpdx1p/Screenshot%202018-05-01%2015.25.38.png?raw=1" width="400">
 this is what the browser did automatically. 
 ```
     font-weight: normal;
@@ -958,28 +958,28 @@ undefined
 jquery helps us manipulate the DOM. it's a js lib. used to manipulate css, ajax etc. just makes some things we already can do easier with DOM. everything you can do with jquery, you can do without: http://youmightnotneedjquery.com
 
 it's been an active debate. 
-<img src="https://www.dropbox.com/s/ggwt1paa4qic7ca/Screenshot%202018-05-01%2015.49.16.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/pjt0gdliw0sm53h/Screenshot%202018-05-01%2015.50.21.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/ggwt1paa4qic7ca/Screenshot%202018-05-01%2015.49.16.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/pjt0gdliw0sm53h/Screenshot%202018-05-01%2015.50.21.png?raw=1" width="400">
 
 the course uses 2.1.4 jquery version. 
 
 [jqueryDemo.html](jqueryDemo.html), 
 
-<img src="https://www.dropbox.com/s/ph90zbie1ey51kg/Screenshot%202018-05-01%2015.59.48.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/ph90zbie1ey51kg/Screenshot%202018-05-01%2015.59.48.png?raw=1" width="400">
 
 also you can install with CDN.  
 
-<img src="https://www.dropbox.com/s/ihv04st44az42l3/Screenshot%202018-05-01%2016.01.19.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/ihv04st44az42l3/Screenshot%202018-05-01%2016.01.19.png?raw=1" width="400">
 
-<img src="https://www.dropbox.com/s/6m5b9cvzrd93nt5/Screenshot%202018-05-01%2016.02.38.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/7wl6js4z2k3eqhc/Screenshot%202018-05-01%2016.03.04.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/ggz06cxx4p2tt1z/Screenshot%202018-05-01%2016.06.12.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/acwgzwkt3pivc8y/Screenshot%202018-05-01%2016.06.37.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/6m5b9cvzrd93nt5/Screenshot%202018-05-01%2016.02.38.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/7wl6js4z2k3eqhc/Screenshot%202018-05-01%2016.03.04.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/ggz06cxx4p2tt1z/Screenshot%202018-05-01%2016.06.12.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/acwgzwkt3pivc8y/Screenshot%202018-05-01%2016.06.37.png?raw=1" width="400">
 still, all strings, because it's still js code. but wait , jquery can also take an object as above shown. although actual values for each property should still be strings. yes, js does not provide something like `document.body.style = some object`. 
-<img src="https://www.dropbox.com/s/eez136hlt22f2ol/Screenshot%202018-05-01%2016.08.46.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/eez136hlt22f2ol/Screenshot%202018-05-01%2016.08.46.png?raw=1" width="400">
 another limitation of js is, you can only manipulate one element a time: remember how we have to use loop everywhere. this is much easier in jquery.  
 reminder: in js and jquery:
-<img src="https://www.dropbox.com/s/gcvvohu72rk3clq/Screenshot%202018-05-01%2016.10.53.png?dl=0" width="300">
+<img src="https://www.dropbox.com/s/gcvvohu72rk3clq/Screenshot%202018-05-01%2016.10.53.png?raw=1" width="300">
 property names has to be camel case rather than with dash lines `-`. 
 
 [exercise.html](exercise.html), [exercise.js](exercise.js); 
@@ -1002,7 +1002,7 @@ property names has to be camel case rather than with dash lines `-`.
 ```
 note how you have to include the `script` twice; they have different `src` and serve different purposes. the reason is this, first in `head`, we load jquery, so we can use it in our code. also, the second `script` is late, because we want the static html to load before we run the script.  
 check that your jquery works:
-<img src="https://www.dropbox.com/s/0eaireitdbm1gu8/Screenshot%202018-05-01%2016.18.46.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/0eaireitdbm1gu8/Screenshot%202018-05-01%2016.18.46.png?raw=1" width="400">
 ```js
 // Select the divs with class "highlight" and make them 200px wide
 $("div.highlight").css("width", "200px");
@@ -1013,54 +1013,54 @@ this means all `div`s with class `hightlight`: note the similarity and different
 $("div:first-of-type").css("color", "pink");
 ```
 this pseudo-selector is new.  
-<img src="https://www.dropbox.com/s/gwgycn1kdusy4z6/Screenshot%202018-05-01%2016.21.44.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/gwgycn1kdusy4z6/Screenshot%202018-05-01%2016.21.44.png?raw=1" width="400">
 this also work, which is a shortcut built-in in jQuery. but this is actually slower, because it's not *native* to css.  
 
 ### lec182, 183, 184
 common methods:
-<img src="https://www.dropbox.com/s/3piv092ne2e29uf/Screenshot%202018-05-01%2016.22.37.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/wvm77bx951wtq07/Screenshot%202018-05-01%2016.25.54.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/3piv092ne2e29uf/Screenshot%202018-05-01%2016.22.37.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/wvm77bx951wtq07/Screenshot%202018-05-01%2016.25.54.png?raw=1" width="400">
 notice how when you are selecting all `li`, the final content is concatenated together.  the above uses 0arg, you can pass in arguments: 
-<img src="https://www.dropbox.com/s/5lmlu4lfeoqufmv/Screenshot%202018-05-01%2016.26.36.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/5lmlu4lfeoqufmv/Screenshot%202018-05-01%2016.26.36.png?raw=1" width="400">
 then it just acts like a `set` method instead of a `get`. but it might not always be what you want:
-<img src="https://www.dropbox.com/s/lxtkkmaa3sm8v0d/Screenshot%202018-05-01%2016.27.38.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/lxtkkmaa3sm8v0d/Screenshot%202018-05-01%2016.27.38.png?raw=1" width="400">
 notice how the one string is broadcast to all `li`. this can be problematic. vanilla js would allow more flexibility. 
 
 `html` just like `innerHTML`. some quirks:
-<img src="https://www.dropbox.com/s/cbwran4k87sfyh2/Screenshot%202018-05-01%2016.28.44.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/cbwran4k87sfyh2/Screenshot%202018-05-01%2016.28.44.png?raw=1" width="400">
 `get` only returns the first, while `set` actually sets all in the list. again, `text` can't do the same thing: it's html-safe, meaning html tags in it won't be interpreted/rendered.  
 
-<img src="https://www.dropbox.com/s/qxh7ydretyd3q2w/Screenshot%202018-05-01%2016.32.41.png?dl=0" width="600">
+<img src="https://www.dropbox.com/s/qxh7ydretyd3q2w/Screenshot%202018-05-01%2016.32.41.png?raw=1" width="600">
 how about delete attribute? again, notice how attribute is different from property. 
 * attribute: things like `src` of `a` in html; 
 * property: things like `margin-top` in css; 
 
 they both act on html elements though. 
-<img src="https://www.dropbox.com/s/lwny3rj7a8izvui/Screenshot%202018-05-01%2016.35.41.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/lwny3rj7a8izvui/Screenshot%202018-05-01%2016.35.41.png?raw=1" width="400">
 changing the `type` of `input` can be powerful.  
 of course, jQuery can still work around the broadcasting behavior: 
-<img src="https://www.dropbox.com/s/e4qw9hgbvph97xl/Screenshot%202018-05-01%2016.37.00.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/e4qw9hgbvph97xl/Screenshot%202018-05-01%2016.37.00.png?raw=1" width="400">
 it just requires a little css trick now. now you don't do those intra-list logic in js, but rather with css.  what about last?
-<img src="https://www.dropbox.com/s/uzkv3hvonfow40o/Screenshot%202018-05-01%2016.38.07.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/uzkv3hvonfow40o/Screenshot%202018-05-01%2016.38.07.png?raw=1" width="400">
 seems a lot of api to remember. `nth-of-type` should be convenient. but what about range query? not sure how to do so far. 
-<img src="https://www.dropbox.com/s/ra4rrj2qrq504ug/Screenshot%202018-05-01%2016.40.05.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/ra4rrj2qrq504ug/Screenshot%202018-05-01%2016.40.05.png?raw=1" width="400">
 `select.foo` means the `select` **elemenet** with **class** `foo`. 不要用传统编程里面的dot来理解; `select`本身什么前缀都没有, 所以就是一个tag而已; 
 
-<img src="https://www.dropbox.com/s/wt6jj2bxj3k2m07/Screenshot%202018-05-01%2016.45.11.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/wt6jj2bxj3k2m07/Screenshot%202018-05-01%2016.45.11.png?raw=1" width="400">
 notice how the last one clears the input box. last thing, `.val()` actually works on all elements with `value` attribute, so not just `input`. like drop down menus, which is `select` element. 这么看来`attr`和`val`是不是有点重叠啊? `value`本身也是一个attribute. 
 
-<img src="https://www.dropbox.com/s/aahfjzhn4yb3hrw/Screenshot%202018-05-01%2016.51.16.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/aahfjzhn4yb3hrw/Screenshot%202018-05-01%2016.51.16.png?raw=1" width="400">
 注意看这里, 实际上还是有区别的; `attr`本身实际上就是在element的定义本身里面去找这个attribute: 如果HTML里面没有写`value`这个attribute, 那么`attr`就没有办法把它给提取出来; 但是对于这里这个例子
 ```html
     <input type="text" name="">
 ```
 实际上直接用`val`照样可以用, 即使根本没有explicit的写出来`value`这个attribute; 
 
-<img src="https://www.dropbox.com/s/6idsnquwedfcnek/Screenshot%202018-05-01%2016.53.57.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/p6tqsy3015yrkwd/Screenshot%202018-05-01%2016.54.33.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/6idsnquwedfcnek/Screenshot%202018-05-01%2016.53.57.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/p6tqsy3015yrkwd/Screenshot%202018-05-01%2016.54.33.png?raw=1" width="400">
 note that broadcast also applies. 
-<img src="https://www.dropbox.com/s/14pj996spqs5dbj/Screenshot%202018-05-01%2016.55.37.png?dl=0" width="400">
-<img src="https://www.dropbox.com/s/xs9zr8bz0uwmzx0/Screenshot%202018-05-01%2016.55.52.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/14pj996spqs5dbj/Screenshot%202018-05-01%2016.55.37.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/xs9zr8bz0uwmzx0/Screenshot%202018-05-01%2016.55.52.png?raw=1" width="400">
 notice how `first` is also available. 
 
 
