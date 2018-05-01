@@ -329,9 +329,66 @@ ar1
 ```
 注意这个splice的用法; 跟string的那个`slice`不要搞混了; 另外这个splice函数是一个mutation的函数; 第一个参数是index, 第二个是一共要splice掉的count, 跟slice的参数也有不同. 
 
+### lec135, 136, 137
+<img src="https://www.dropbox.com/s/w2jzgpa6j3lznfe/Screenshot%202018-04-30%2020.50.21.png?raw=1" width="400">
 
+看这里, foreach也是有坑的. 他这个return最后只是return掉了一个element的函数执行, 下一个element还是会继续执行这个无名函数. 这个应该是可以修正的, 不过应该很麻烦; 
 
+<img src="https://www.dropbox.com/s/n283dq072c9617f/Screenshot%202018-04-30%2020.51.30.png?raw=1" width="400">
+sum的foreach写法; 这个手感可能稍微有点陌生. 
 
+```js
+// =========
+// VERSION 1
+// =========
+function myForEach(arr, func){
+    for (var i = 0; i < arr.length; i++) {
+        func(arr[i]);
+    }
+}
+
+var colors = ["red", "orange", "yellow", "green", "blue", "PURPLE"];
+myForEach(colors, function(color){
+    console.log(color);
+});
+
+// =========
+// VERSION 2 
+// =========
+Array.prototype.myForEach = function(func){
+  for(var i = 0; i < this.length; i++) {
+   func(this[i]);
+  }
+};
+
+var colors = ["red", "orange", "yellow", "green", "blue", "PURPLE"];
+colors.myForEach(function(color){
+    console.log(color);
+});
+```
+prototype好像就有点类似an object that stores the collections of all attributes/methods这样的东西; 不过难道可以直接用户也修改`Array`的属性? 要是只是修改一个array object本身而不是type的我倒还可以接受; 
+
+另外, 注意这里这个`this`的使用; 
+
+### lec138, 139, 140, 141, 142, 143
+<img src="https://www.dropbox.com/s/5ukn02dleof8b3g/Screenshot%202018-04-30%2021.02.51.png?raw=1" width="500">
+array is not good because we don't need the *order*, but rather than the *mapping*. for example, you can't enforce name to be index 0. 
+
+<img src="https://www.dropbox.com/s/52gd7rp9tp90la6/Screenshot%202018-04-30%2021.03.54.png?raw=1" width="400">
+所以居然也可以用跟array一样的做法来搞. 不过要用string, 还是有点奇怪; 
+
+<img src="https://www.dropbox.com/s/ly3b6f715opqzzq/Screenshot%202018-04-30%2021.05.04.png?raw=1" width="600">
+但是好像用string的方法更好, 一来是这个field name的自由度更高, 而来是允许dynamic, 这个就很强了; 
+
+<img src="https://www.dropbox.com/s/j0qb14yjw9u3lj1/Screenshot%202018-04-30%2021.06.51.png?raw=1" width="600">
+甚至根本就不需要定义, 后面自己临时去加; 另外一个奇怪的刚才没注意的: 你看object定义里面, field之间居然是用逗号来分开的; 
+
+<img src="https://www.dropbox.com/s/pl1gfzslec8ktov/Screenshot%202018-04-30%2021.09.19.png?raw=1" width="600">
+这个一看, js的array和object完全就是JSON的格式. 难怪. 之前我一直认为大括号代表的是dictionary, 当时这么理解是可以的, 不过放在js自己的语境下面理解, 实际上应该是大括号代表object. 
+
+另外之前说过, 如果想要用dot, 那么field name开头不能是数字: 一个解决办法就是用underscore. 当然这个也是一个规避的方法而已; 
+
+<img src="https://www.dropbox.com/s/gmpoxsxk1gh41q8/Screenshot%202018-04-30%2021.13.45.png?raw=1" width="600">
 
 
 
