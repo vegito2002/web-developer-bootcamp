@@ -390,10 +390,389 @@ array is not good because we don't need the *order*, but rather than the *mappin
 
 <img src="https://www.dropbox.com/s/gmpoxsxk1gh41q8/Screenshot%202018-04-30%2021.13.45.png?raw=1" width="600">
 
+<img src="https://www.dropbox.com/s/avw3xzn0qhbl9fs/Screenshot%202018-05-01%2001.14.52.png?raw=1" width="500">
+function can also be a member, or a method. 
+```js
+obj.add (10, 5);
+```
+<img src="https://www.dropbox.com/s/vk3jrdru9fc6wmg/Screenshot%202018-05-01%2001.16.52.png?raw=1" width="400">
+
+### lec144, 145, 148
+[http://underscorejs.org/](http://underscorejs.org/)
+
+<img src="https://www.dropbox.com/s/7rjvvtktv0w0yco/Screenshot%202018-05-01%2001.20.52.png?dl=0" width="400">
+note how now this anonymous function does not need argument anymore. 
+
+> As you begin working with the DOM you'll be writing some JavaScript code that selects HTML elements from the page and manipulates them.   
+>   
+> When doing this, be sure to include your JavaScript code at the bottom of the HTML document, right before the closing </body>  tag.  
+>   
+> The HTML will need to have loaded before the JavaScript is run, otherwise the JavaScript will throw an error because the HTML that it is trying to select and manipulate doesn't exist (yet).  
+
+终于开始互动了. 
+
+DOM: document object model. 
+
+<img src="https://www.dropbox.com/s/eyid86ea2gk1942/Screenshot%202018-05-01%2001.27.19.png?raw=1" width="500">
+
+each element turned into an object. 
+
+<img src="https://www.dropbox.com/s/67o3kdibaq3b15d/Screenshot%202018-05-01%2001.28.22.png?raw=1" width="400">
+this does not get the `document`, it's been hidden by the browser. 
+<img src="https://www.dropbox.com/s/qnph1br22meg1of/Screenshot%202018-05-01%2001.29.07.png?raw=1" width="400">
+this works, you see an object. 
+
+so js is not scripting: I thought it just generates HTML files for us. 
+
+<img src="https://www.dropbox.com/s/xubs216sstvmd0y/Screenshot%202018-05-01%2001.32.58.png?raw=1" width="500">
+
+<img src="https://www.dropbox.com/s/1prgp8migs6drcy/Screenshot%202018-05-01%2001.34.04.png?raw=1" width="500">
+so `querySelector` 返回的实际上是一个指针? 
+<img src="https://www.dropbox.com/s/zrj2cvakzv8713g/Screenshot%202018-05-01%2001.34.58.png?raw=1" width="500">
+
+### lec149, 150, 151, 152, 153
+<img src="https://www.dropbox.com/s/rd5abgbtycrlcdq/Screenshot%202018-05-01%2001.38.17.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/g3r8ohgyldw68q2/Screenshot%202018-05-01%2001.38.39.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/gapqoelqiny7jls/Screenshot%202018-05-01%2001.41.46.png?raw=1" width="400">
+remember that an `id` can appear at most one time in a page. 
+<img src="https://www.dropbox.com/s/y1cjlf3okuwxv10/Screenshot%202018-05-01%2001.45.26.png?raw=1" width="500">
+looks like an array, can bracket index, but not really an array. for instance, can't `forEach`. it's actually an object.  
+<img src="https://www.dropbox.com/s/7jgxu9bygt2vg1n/Screenshot%202018-05-01%2001.46.59.png?raw=1" width="500">
+returns a list no matter how many matches.  
+<img src="https://www.dropbox.com/s/mke6xiuxeioaqi4/Screenshot%202018-05-01%2001.48.31.png?raw=1" width="500">
+you can anything you would put in a css. it will always only return the first matche though. tag names also works of course. 
+<img src="https://www.dropbox.com/s/vu03xfb1huqha3l/Screenshot%202018-05-01%2001.50.18.png?raw=1" width="400">
+the last one returns `null` because we don't have any on this page.  
+<img src="https://www.dropbox.com/s/vul0sicljlzle83/Screenshot%202018-05-01%2001.51.28.png?raw=1" width="400">
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Title</title>
+</head>
+<body>
+    <h1>I am an h1!</h1>
+    <p id="first" class="special">Hello</p>
+    <p class="special">Goodbye</p>
+    <p>Hi Again</p>
+    <p id="last">Goodbye Again</p>
+</body>
+</html>
+```
+
+<img src="https://www.dropbox.com/s/zz44ihb5qo8ogo5/Screenshot%202018-05-01%2001.53.57.png?raw=1" width="500">
+<img src="https://www.dropbox.com/s/wlee600212abo1i/Screenshot%202018-05-01%2001.54.42.png?raw=1" width="500">
+
+<img src="https://www.dropbox.com/s/3k1x3zd6xk1fv8s/Screenshot%202018-05-01%2001.55.52.png?raw=1" width="500">
+<img src="https://www.dropbox.com/s/ejjl72y8rhxskod/Screenshot%202018-05-01%2001.56.25.png?raw=1" width="500">
+do note that all the values MUST be a string. 
+
+each element has `style` property, which is huge. 
+<img src="https://www.dropbox.com/s/qb7gv76wotmq2at/Screenshot%202018-05-01%2001.57.49.png?raw=1" width="400">
+
+<img src="https://www.dropbox.com/s/njcztu23w61uv1w/Screenshot%202018-05-01%2002.00.04.png?raw=1" width="500">
+这个技巧还是有点意思的; 不要自己手动去改这些property, 而是事先就在css里面用一个class把这个给打包起来; 如果你要改的时候, 直接改`class` of this element, 而不是一个一个的改所有的Property, 这样方便的多; 
+<img src="https://www.dropbox.com/s/vqg2z786ywb12qy/Screenshot%202018-05-01%2002.01.53.png?raw=1" width="400">
+
+<img src="https://www.dropbox.com/s/4khqms0oli29xm1/Screenshot%202018-05-01%2002.02.49.png?raw=1" width="400">
+do note that this list is not an array, so you can't use `push` etc. you have to use `add`, `remove` etc. 
+
+### lec154, 155
+<img src="https://www.dropbox.com/s/weg3vsa64ek2qnh/Screenshot%202018-05-01%2002.04.57.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/6yr9e5g1gdhb12i/Screenshot%202018-05-01%2002.06.14.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/4zlvwqgych5yzio/Screenshot%202018-05-01%2002.06.35.png?raw=1" width="400">
+note how all tags are removed, and all texts are *concatenated* as a string. 
+<img src="https://www.dropbox.com/s/l8ocj7vcpjasdlr/Screenshot%202018-05-01%2002.07.40.png?raw=1" width="400">
+completely overrides it, including any tags included in the text content. be aware of this danger. 
+<img src="https://www.dropbox.com/s/hi9ooxxzko5ure6/Screenshot%202018-05-01%2002.08.27.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/9tt9jgfe7vc9pr7/Screenshot%202018-05-01%2002.09.02.png?raw=1" width="400">
+感觉后面就要开始直接的string scripting了;
+<img src="https://www.dropbox.com/s/4aw7hxriqzv70kz/Screenshot%202018-05-01%2002.10.03.png?raw=1" width="400">
+chaining works. 
+<img src="https://www.dropbox.com/s/l16iu0za72k1vh6/Screenshot%202018-05-01%2002.11.11.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/7qgka7auy52x5ru/Screenshot%202018-05-01%2002.11.44.png?raw=1" width="400">
+`textContent` treats everything as string rather than html: it does not render it. `innerHTML` can work.  
+
+<img src="https://www.dropbox.com/s/wsph2dminyp40rv/Screenshot%202018-05-01%2002.12.40.png?raw=1" width="400">
+
+one subtle thing, use *attribute* to refer to things in html like `src`, but use *property* to refer to things like *border*. 
+
+<img src="https://www.dropbox.com/s/z5bh07g9s6upnl2/Screenshot%202018-05-01%2002.15.44.png?raw=1" width="400">
+note how he uses the returned array to access something like *the 2nd image*, rather than specifying the css selector. this is easier. 
+<img src="https://www.dropbox.com/s/cvh113fwwlbt6m7/Screenshot%202018-05-01%2002.17.07.png?raw=1" width="400">
+important to include the `http://`, otherwise it's treated as a relative path. this is just like unix fs. 
+<img src="https://www.dropbox.com/s/3y9kvjkxesemlrl/Screenshot%202018-05-01%2002.18.04.png?raw=1" width="400">
+now it's entirely changed. 
+
+### lec156, 157
+inspect then select trick to play with other people's website. 
+<img src="https://www.dropbox.com/s/uuy0l4yjxp195au/Screenshot%202018-05-01%2002.21.59.png?raw=1" width="400">
+this is better than statically modify. using js is easier. 
+<img src="https://www.dropbox.com/s/b8k4wu2bryelj7l/Screenshot%202018-05-01%2002.22.41.png?raw=1" width="400">
+again, note how you have to use string. 
+<img src="https://www.dropbox.com/s/4ogcv20uc0uxmib/Screenshot%202018-05-01%2002.24.31.png?raw=1" width="400">
+
+<img src="https://www.dropbox.com/s/g78aqcloml1emn7/Screenshot%202018-05-01%2002.26.48.png?raw=1" width="400">
+remember again, `forEach` does not work for this return value list. 
+
+also, note the results for this, some are relative paths, some are web paths. 
+
+### lec158, 159
+<img src="https://www.dropbox.com/s/hgsqjxrzaxb1l7k/Screenshot%202018-05-01%2002.29.01.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/y4vjj99gbdcmlol/Screenshot%202018-05-01%2002.29.28.png?raw=1" width="400">
+<img src="https://www.dropbox.com/s/tmfkr2lnzgrix7z/Screenshot%202018-05-01%2002.30.33.png?raw=1" width="400">
+you can have multiple listeners to the same event on the same element. 
+<img src="https://www.dropbox.com/s/6w2i9olggpok8m1/Screenshot%202018-05-01%2002.32.55.png?raw=1" width="400">
+note that this click refers to the `ul`: it's the whole thing, so you click anywhere in the range of the `ul`, the even listener triggers. if you want to add listener to all `li`: 
+<img src="https://www.dropbox.com/s/z49vk7cpvnfxgam/Screenshot%202018-05-01%2002.34.26.png?raw=1" width="400">
+unfortunately a loop is unavoidable. 
+<img src="https://www.dropbox.com/s/j13jj0qtqjcase4/Screenshot%202018-05-01%2002.35.18.png?raw=1" width="400">
+note how `this` is used: which does it refer to here? it's a listener function, so it actually refers to the subject/owner of the listener. yes it's dynamic! when the function is evaled, `this` is resoluted dynamically, at the time of eval, to refer to the object that owns this listener.  
+also, this is a very common pattern: select, loop, do something.  
+
+[toggle.html](toggle.html) [toggle.js](toggle.js)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Toggle</title>
+
+    <style type="text/css">
+    .purple {
+        background: purple;
+    }
+    </style>
+
+</head>
+<body>
+    <button>CLICK ME</button>
 
 
+    <script type="text/javascript" src="toggle.js"></script>
+</body>
+</html>
+```
+note again, how `script` has to be the bottom, after `button` loaded. 
+
+```js
+var button = document.querySelector("button");
+// var isPurple = false;
 
 
+// button.addEventListener("click", function(){
+//  if(isPurple){
+//      document.body.style.background = "white";
+//  } else {
+//      document.body.style.background = "purple";
+//  }
+//  isPurple = !isPurple;
+// });
+
+
+button.addEventListener("click", function(){
+    document.body.classList.toggle("purple");
+});
+```
+note again how `document.body` is just some sugar: like querySelector ("body") or something.  
+note how `toggle` here makes things so much easier. always think this way, rather than manually manipulate properties directly. `classList` is the usual way of doing things like this. 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Keeper</title>
+    <link rel="stylesheet" type="text/css" href="scorekeeper.css">
+</head>
+<body>
+
+<h1><span id="p1Display">0</span> to <span id="p2Display">0</span></h1>
+
+<p>Playing to: <span>5</span></p>
+
+<input type="number">
+<button id="p1">Player One</button>
+<button id="p2">Player Two</button>
+<button id="reset">Reset</button>
+
+<script type="text/javascript" src="scorekeeper.js"></script>
+</body>
+</html>
+```
+
+```js
+var p1Button = document.querySelector("#p1");
+var p2Button = document.getElementById("p2");
+var resetButton = document.getElementById("reset");
+var p1Display = document.querySelector("#p1Display");
+var p2Display = document.querySelector("#p2Display");
+var numInput = document.querySelector("input");
+var winningScoreDisplay = document.querySelector("p span");
+var p1Score = 0;
+var p2Score = 0;
+var gameOver = false;
+var winningScore = 5;
+
+p1Button.addEventListener("click", function(){
+    if(!gameOver){
+        p1Score++;
+        if(p1Score === winningScore){
+            p1Display.classList.add("winner");
+            gameOver = true;
+        }
+        p1Display.textContent = p1Score;
+    }
+});
+
+p2Button.addEventListener("click", function(){
+    if(!gameOver){
+        p2Score++;
+        if(p2Score === winningScore){
+            p2Display.classList.add("winner");
+            gameOver = true;
+        }
+        p2Display.textContent = p2Score;
+    }
+});
+
+resetButton.addEventListener("click", function(){
+    reset();
+});
+
+function reset(){
+    p1Score = 0;
+    p2Score = 0;
+    p1Display.textContent = 0;
+    p2Display.textContent = 0;
+    p1Display.classList.remove("winner");
+    p2Display.classList.remove("winner");
+    gameOver = false;
+}
+
+numInput.addEventListener("change", function(){
+    winningScoreDisplay.textContent = this.value;
+    winningScore = Number(this.value);
+    reset();
+});
+```
+
+```css
+.winner {
+    color:green;
+}
+```
+
+<img src="https://www.dropbox.com/s/oc3p28zmjcsq95g/Screenshot%202018-05-01%2002.45.23.png?raw=1" width="400">
+notice how he uses this `alert` to do debugging. js这个界面交互真的是简单. 
+
+```html
+<h1><span id="p1Display">0</span> to <span id="p2Display">0</span></h1>
+```
+this is to separate regions in the same text content area: this is better than assembling the entire text content yourself by hand. 
+
+这个例子如果你仔细看可以发现, 一个小小的页面背后实际上写一个逻辑也并不是那么简单的; 
+
+### lec161, 
+
+> Meanwhile, some students have been asking about the difference between the input and change event listeners, [here](https://stackoverflow.com/a/17047607/3176573)'s a good explanation of both - https://stackoverflow.com/a/17047607/3176573
+
+<img src="https://www.dropbox.com/s/5fbzff0sfmfewmc/Screenshot%202018-05-01%2002.54.27.png?raw=1" width="400">
+这个是他一直用的一个debug技巧, 每次select了一个东西之后, 立刻就直接写单独的一行, 然后`console.log`出来, 然后在浏览器里面看一下有没有结果; 这个其实跟平时print debug是差不多的;  
+notice that:
+```js
+    p1Display.classList.remove("winner");
+    p2Display.classList.remove("winner");
+```
+he does not really check which one is the winner, just do it for both: `remove` won't return error if the class does not exist in the class list.  
+
+also, first time seen this:
+```html
+<input type="number">
+```
+
+<img src="https://www.dropbox.com/s/mf4yy199n0lr3l0/Screenshot%202018-05-01%2003.01.24.png?raw=1" width="400">
+
+note how this `value` attribute is actually a string. 
+
+fun bug:
+<img src="https://www.dropbox.com/s/92vzrtg4kq88mfb/Screenshot%202018-05-01%2003.02.40.png?raw=1" width="400">
+should be easy to see: you are comparing `5` to `"5"` with `===`. one way to fix would be to use `==`, but abuse of that is dangerous. the solution took another approach. 
+
+this is the problem with untyped language:
+<img src="https://www.dropbox.com/s/ler68envyrx4ktt/Screenshot%202018-05-01%2003.03.57.png?raw=1" width="400">
+notice how here when you set the input, the var suddently is assigned to a string, which is previously a number. 
+
+and also see why you have to refactor the `reset` function: it's used both when `reset` itself is clicked, and when the max score is changed. it's a reasonable design choice. 
+
+<img src="https://www.dropbox.com/s/b4ppyojz2wn98g8/Screenshot%202018-05-01%2003.07.49.png?raw=1" width="400">
+notice how he refactored this code to use `this`. 
+
+### lec163
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Todo List Demo</title>
+    <link rel="stylesheet" type="text/css" href="todos.css">
+</head>
+<body>
+
+<ul>
+    <li>Wash Cat</li>
+    <li>Feed Cat</li>
+    <li>Feed Cat to Dog</li>
+</ul>
+
+<script type="text/javascript" src="todos.js"></script>
+
+</body>
+</html>
+```
+
+```css
+.done {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.selected {
+    color: green;
+}
+```
+```js
+var lis = document.querySelectorAll("li");
+
+for(var i = 0; i < lis.length; i++){
+    lis[i].addEventListener("mouseover", function(){
+        this.classList.add("selected");
+    });
+
+    lis[i].addEventListener("mouseout", function(){
+        this.classList.remove("selected");
+    });
+
+    lis[i].addEventListener("click", function(){
+        this.classList.toggle("done");
+    });
+}
+```
+
+note:
+```js
+    lis[i].addEventListener("mouseover", function(){
+        this.classList.add("selected");
+    });
+```
+this is edge-triggered: so when you hover over it, it's not constantly firing. but this only takes care of the turn-on edge. add this to take care of the down-edge:
+```js
+    lis[i].addEventListener("mouseout", function(){
+        this.classList.remove("selected");
+    });
+```
+again, notice how we use class to manipulate properties instead of manually. this is especially useful in this case: you will need an *do* and an *undo* operation and class list just naturally handles that. also note how you constantly have to use `this` in the listener: it can also be seen like a pattern.  
+one minor thing, even you did not define `selected`, this would still result in the class being added/removed from the class list. the language does not check for that. 
 
 
 
