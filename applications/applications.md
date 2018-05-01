@@ -261,13 +261,73 @@ var todos = ["Buy New Turtle"];
 window.setTimeout(function() {  
     // put all the rest of your JS code from the lecture here  
 }, 500);  
-  
+
 ```
 > If you include the todos array inside of the window.setTimeout() function then it's scope will be local to the anonymous function (callback) and you won't be able to access it from the chrome console.  
 
+这一期要求做一个todo list, 但是是一个很无聊的功能能, 懒得跟着敲了; 
 
+```js
+console.log (ar1)
+VM110:1 (5) [0, 1, 2, 3, 5]
+```
+这个array print做的倒是还可以; 
+<img src="https://www.dropbox.com/s/2j21u8ujpqsglj4/Screenshot%202018-04-30%2020.25.04.png?raw=1" width="500">
+see how you can actually query even variables in the console. this is great for debugging. 
 
+### lec131, 132, 133
+讲到这里为止, 实际上还都是针对js本身的编程, 当然浏览器提供了IO. 真正我们最后想要达到的效果是, js执行之后能够对页面的html进行一个修改, 这个目前还没有讲到; 
 
+<img src="https://www.dropbox.com/s/ttc2gkd0zco1ix7/Screenshot%202018-04-30%2020.29.05.png?raw=1" width="400">
+
+这个跟java的foreach还有点区别. 这个要传一个function进去的; 另外可以看到, 这里的forEach, 实际上是一个函数, 而java里面, 实际上最后好像就是一个语法糖, 底下还是用iterator实现的. 
+<img src="https://www.dropbox.com/s/5sgninhzpqfbafh/Screenshot%202018-04-30%2020.32.59.png?raw=1" width="400">
+单纯看这里, 是不是可以说undefined实际上跟void差不多? 所以报错的时候, 返回值也是直接返回一个类似void的东西? 
+
+> .forEach takes a callback function, that callback function is expected to have at least 1, but up to 3, arguments. This is how .forEach was designed.  
+>   
+> The arguments are in a specific order:  
+> - The first one represents each element in the array (per loop iteration) that .forEach was called on.  
+> - The second represents the index of said element.  
+> - The third represents the array that .forEach was called on (it will be the same for every iteration of the loop).  
+>   
+> You have a couple options when calling .forEach on an array:  
+>   
+> You can pass in an anonymous function:  
+
+```js
+[1,2,3].forEach(function(el, i, arr) {
+  console.log(el, i, arr);
+});
+```
+
+> Or you can pass in a pre-written, named function.
+
+```js
+function logNums(el, i, arr) {
+  console.log(el, i, arr);
+}
+
+ 
+[1,2,3].forEach(logNums);
+```
+
+> Notice how in the second example we don't invoke logNums when passing it into .forEach? We simply pass in the function name. We don't need to invoke the logNums function, .forEach does that for us. In fact, it invokes the function multiple times, once for every element inside of the array.
+
+[todos.html](todos.html), [todos.js](todos.js)
+
+大概自己看看吧, 不能直接改变页面内容的这些, 都懒得看了; 
+
+```js
+ar1
+(5) [0, 1, 2, 3, 5]
+(anonymous) @ VM121:1
+ar1.splice (1, 1)
+[1]
+ar1
+(4) [0, 2, 3, 5]
+```
+注意这个splice的用法; 跟string的那个`slice`不要搞混了; 另外这个splice函数是一个mutation的函数; 第一个参数是index, 第二个是一共要splice掉的count, 跟slice的参数也有不同. 
 
 
 
