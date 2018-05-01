@@ -954,6 +954,120 @@ undefined
 ```
 这里老师上课的时候认为这里最后得到的是`null`, 实际上是错误的, 出界给的是`undefined`.  
 
+### lec176, 177, 178, 179, 180, 181
+jquery helps us manipulate the DOM. it's a js lib. used to manipulate css, ajax etc. just makes some things we already can do easier with DOM. everything you can do with jquery, you can do without: http://youmightnotneedjquery.com
+
+it's been an active debate. 
+<img src="https://www.dropbox.com/s/ggwt1paa4qic7ca/Screenshot%202018-05-01%2015.49.16.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/pjt0gdliw0sm53h/Screenshot%202018-05-01%2015.50.21.png?dl=0" width="400">
+
+the course uses 2.1.4 jquery version. 
+
+[jqueryDemo.html](jqueryDemo.html), 
+
+<img src="https://www.dropbox.com/s/ph90zbie1ey51kg/Screenshot%202018-05-01%2015.59.48.png?dl=0" width="400">
+
+also you can install with CDN.  
+
+<img src="https://www.dropbox.com/s/ihv04st44az42l3/Screenshot%202018-05-01%2016.01.19.png?dl=0" width="400">
+
+<img src="https://www.dropbox.com/s/6m5b9cvzrd93nt5/Screenshot%202018-05-01%2016.02.38.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/7wl6js4z2k3eqhc/Screenshot%202018-05-01%2016.03.04.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/ggz06cxx4p2tt1z/Screenshot%202018-05-01%2016.06.12.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/acwgzwkt3pivc8y/Screenshot%202018-05-01%2016.06.37.png?dl=0" width="400">
+still, all strings, because it's still js code. but wait , jquery can also take an object as above shown. although actual values for each property should still be strings. yes, js does not provide something like `document.body.style = some object`. 
+<img src="https://www.dropbox.com/s/eez136hlt22f2ol/Screenshot%202018-05-01%2016.08.46.png?dl=0" width="400">
+another limitation of js is, you can only manipulate one element a time: remember how we have to use loop everywhere. this is much easier in jquery.  
+reminder: in js and jquery:
+<img src="https://www.dropbox.com/s/gcvvohu72rk3clq/Screenshot%202018-05-01%2016.10.53.png?dl=0" width="300">
+property names has to be camel case rather than with dash lines `-`. 
+
+[exercise.html](exercise.html), [exercise.js](exercise.js); 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Exercise</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div>Div 1</div>
+    <div class="highlight">Div 2</div>
+    <div id="third">Div 3</div>
+    <div class="highlight">Div 4</div>
+
+    <script type="text/javascript" src="exercise.js"></script>
+</body>
+</html>
+```
+note how you have to include the `script` twice; they have different `src` and serve different purposes. the reason is this, first in `head`, we load jquery, so we can use it in our code. also, the second `script` is late, because we want the static html to load before we run the script.  
+check that your jquery works:
+<img src="https://www.dropbox.com/s/0eaireitdbm1gu8/Screenshot%202018-05-01%2016.18.46.png?dl=0" width="400">
+```js
+// Select the divs with class "highlight" and make them 200px wide
+$("div.highlight").css("width", "200px");
+```
+this means all `div`s with class `hightlight`: note the similarity and different compared with `.hightlight` used alone. 
+```js
+// Bonus: Select the first div only and change its font color to pin
+$("div:first-of-type").css("color", "pink");
+```
+this pseudo-selector is new.  
+<img src="https://www.dropbox.com/s/gwgycn1kdusy4z6/Screenshot%202018-05-01%2016.21.44.png?dl=0" width="400">
+this also work, which is a shortcut built-in in jQuery. but this is actually slower, because it's not *native* to css.  
+
+### lec182, 183, 184
+common methods:
+<img src="https://www.dropbox.com/s/3piv092ne2e29uf/Screenshot%202018-05-01%2016.22.37.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/wvm77bx951wtq07/Screenshot%202018-05-01%2016.25.54.png?dl=0" width="400">
+notice how when you are selecting all `li`, the final content is concatenated together.  the above uses 0arg, you can pass in arguments: 
+<img src="https://www.dropbox.com/s/5lmlu4lfeoqufmv/Screenshot%202018-05-01%2016.26.36.png?dl=0" width="400">
+then it just acts like a `set` method instead of a `get`. but it might not always be what you want:
+<img src="https://www.dropbox.com/s/lxtkkmaa3sm8v0d/Screenshot%202018-05-01%2016.27.38.png?dl=0" width="400">
+notice how the one string is broadcast to all `li`. this can be problematic. vanilla js would allow more flexibility. 
+
+`html` just like `innerHTML`. some quirks:
+<img src="https://www.dropbox.com/s/cbwran4k87sfyh2/Screenshot%202018-05-01%2016.28.44.png?dl=0" width="400">
+`get` only returns the first, while `set` actually sets all in the list. again, `text` can't do the same thing: it's html-safe, meaning html tags in it won't be interpreted/rendered.  
+
+<img src="https://www.dropbox.com/s/qxh7ydretyd3q2w/Screenshot%202018-05-01%2016.32.41.png?dl=0" width="600">
+how about delete attribute? again, notice how attribute is different from property. 
+* attribute: things like `src` of `a` in html; 
+* property: things like `margin-top` in css; 
+
+they both act on html elements though. 
+<img src="https://www.dropbox.com/s/lwny3rj7a8izvui/Screenshot%202018-05-01%2016.35.41.png?dl=0" width="400">
+changing the `type` of `input` can be powerful.  
+of course, jQuery can still work around the broadcasting behavior: 
+<img src="https://www.dropbox.com/s/e4qw9hgbvph97xl/Screenshot%202018-05-01%2016.37.00.png?dl=0" width="400">
+it just requires a little css trick now. now you don't do those intra-list logic in js, but rather with css.  what about last?
+<img src="https://www.dropbox.com/s/uzkv3hvonfow40o/Screenshot%202018-05-01%2016.38.07.png?dl=0" width="400">
+seems a lot of api to remember. `nth-of-type` should be convenient. but what about range query? not sure how to do so far. 
+<img src="https://www.dropbox.com/s/ra4rrj2qrq504ug/Screenshot%202018-05-01%2016.40.05.png?dl=0" width="400">
+`select.foo` means the `select` **elemenet** with **class** `foo`. 不要用传统编程里面的dot来理解; `select`本身什么前缀都没有, 所以就是一个tag而已; 
+
+<img src="https://www.dropbox.com/s/wt6jj2bxj3k2m07/Screenshot%202018-05-01%2016.45.11.png?dl=0" width="400">
+notice how the last one clears the input box. last thing, `.val()` actually works on all elements with `value` attribute, so not just `input`. like drop down menus, which is `select` element. 这么看来`attr`和`val`是不是有点重叠啊? `value`本身也是一个attribute. 
+
+<img src="https://www.dropbox.com/s/aahfjzhn4yb3hrw/Screenshot%202018-05-01%2016.51.16.png?dl=0" width="400">
+注意看这里, 实际上还是有区别的; `attr`本身实际上就是在element的定义本身里面去找这个attribute: 如果HTML里面没有写`value`这个attribute, 那么`attr`就没有办法把它给提取出来; 但是对于这里这个例子
+```html
+    <input type="text" name="">
+```
+实际上直接用`val`照样可以用, 即使根本没有explicit的写出来`value`这个attribute; 
+
+<img src="https://www.dropbox.com/s/6idsnquwedfcnek/Screenshot%202018-05-01%2016.53.57.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/p6tqsy3015yrkwd/Screenshot%202018-05-01%2016.54.33.png?dl=0" width="400">
+note that broadcast also applies. 
+<img src="https://www.dropbox.com/s/14pj996spqs5dbj/Screenshot%202018-05-01%2016.55.37.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/xs9zr8bz0uwmzx0/Screenshot%202018-05-01%2016.55.52.png?dl=0" width="400">
+notice how `first` is also available. 
+
+
+
+
+
+
 
 
 
