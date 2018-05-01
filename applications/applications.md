@@ -797,11 +797,172 @@ we have to exclude the `tr` for table headers.
 
 this is fun: https://stackoverflow.com/questions/5657964/css-why-doesn-t-percentage-height-work/5658062#5658062
 
-### lec168, 169
+### lec168, 169, 170, 171
 [colorGame.html](colorGame.html), [colorGame.css](colorGame.css), [colorGame.js](colorGame.js)
 
 <img src="https://www.dropbox.com/s/mb2hxt6f2lhir1q/Screenshot%202018-05-01%2014.02.19.png?dl=0" width="400">
 所以这里是介绍了这两个的区别, 这个也是我之前一直疑惑的一个东西: 看起来一样的效果不过老师一会儿用这个一会儿用那个;
+
+井号“#”的术语是“octothorpe”. 
+```js
+                messageDisplay.textContent = "Correct!";
+```
+note this does not go against the use class list idiom: `textContent` is not the same as style properties, and direct manipulate is accepted;   
+similarly random:
+<img src="https://www.dropbox.com/s/m7bk4id6m5pfep3/Screenshot%202018-05-01%2014.17.23.png?dl=0" width="400">
+
+```js
+function randomColor(){
+    //pick a "red" from 0 - 255
+    var r = Math.floor(Math.random() * 256);
+    //pick a "green" from  0 -255
+    var g = Math.floor(Math.random() * 256);
+    //pick a "blue" from  0 -255
+    var b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
+}
+```
+note how everything is string here with js. 
+<img src="https://www.dropbox.com/s/ylz56vi0i0ft33o/Screenshot%202018-05-01%2014.28.19.png?dl=0" width="400">
+这里好像就是之前为什么强调一定要有空格: 因为最后当我们set之后, DOM css自动就给这个`rgb`加了空格; 所以我们自己写的时候也要这样做, 因为我们有一个和他进行比较的过程:
+```js
+        squares[i].addEventListener("click", function(){
+            //grab color of clicked square
+            var clickedColor = this.style.background;
+            //compare color to pickedColor
+            if(clickedColor === pickedColor){
+                messageDisplay.textContent = "Correct!";
+                resetButton.textContent = "Play Again?"
+                changeColors(clickedColor);
+                h1.style.background = clickedColor;
+            } else {
+                this.style.background = "#232323";
+                messageDisplay.textContent = "Try Again"
+            }
+        });
+```
+这里这个`this.style.background`返回来的自动就是有空格的版本, 所以你和他比较的时候要对应. 为了统一, 所以自己最后写这些string的时候, 就最好还是注意和这些标准进行统一对应. 
+
+<img src="https://www.dropbox.com/s/77a73ggae7ixpu3/Screenshot%202018-05-01%2014.34.03.png?dl=0" width="400">
+this won't set all text in the color to white, as you would expect: after all we are selecting an id already, how specific need be? 
+<img src="https://www.dropbox.com/s/p2e6b8qllk0bhfm/Screenshot%202018-05-01%2014.34.52.png?dl=0" width="400">
+this is because the id only gets you to the parent. but the `span` above actually targets the *message* directly, within the `span`, thus more specific. 
+
+### lec172, 173
+easy和hard两个按钮的状态互动, 他一开始用这个简单的做法: 
+<img src="https://www.dropbox.com/s/adeu0t0v6ywurdk/Screenshot%202018-05-01%2014.51.21.png?dl=0" width="400">
+这个也不错; 当然最后的逻辑实现是挺丑的: 
+```js
+function setupModeButtons(){
+    for(var i = 0; i < modeButtons.length; i++){
+        modeButtons[i].addEventListener("click", function(){
+            modeButtons[0].classList.remove("selected");
+            modeButtons[1].classList.remove("selected");
+            this.classList.add("selected");
+            this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
+            reset();
+        });
+    }
+}
+```
+还需要对button的text进行一个比较; 太想要用generic的方式处理所有的button, 最后得到的代码反而有点不伦不类; 
+<img src="https://www.dropbox.com/s/5q98v66exxx9e7j/Screenshot%202018-05-01%2014.55.44.png?dl=0" width="400">
+use `display` property. 另外注意这里一个问题, 最后因为要区分两个mode, 如果是easy, 只要三个格子, 如果是hard, 就要6个格子. 他最后并没有在HTML上面对这两行进行区分, 而是还是整个当成一个长度为6的list在js里面拿到手, 然后自己循环处理的时候去区分. 这样的一个决定是不是最好的呢? 还不好说; 不过因为js本身自由度比较高, 他把这种各种各样的逻辑更加优先在js里面实现, 也是说得过去的; 
+
+<img src="https://www.dropbox.com/s/463k20zi4un9924/Screenshot%202018-05-01%2015.09.29.png?dl=0" width="400">
+the little black margin on the sides of `h1` is actually coming from the `body` (it does not get as closesly possible with the container: the window), rather than the `h1` itself: we already fixed that.  
+```css
+body {
+    background-color: #232323;
+    margin: 0;
+    font-family: "Montserrat", "Avenir";
+}
+```
+this provides two choices for the fonts, in case one of them fails. in that case, the fonts would fall back to the system defaults.  
+note how this is to remove the default border of a button:
+```
+    border: none;
+    background: none;
+    font-size: inherit;
+```
+```css
+button:hover {
+    color: white;
+    background: steelblue;
+}
+```
+maybe this can also be done in js? but since it's quite pre-defined behavior, changing it in css itself might make sense. 
+```
+    transition: all 0.3s;
+```
+this means, whenever any properties *changes*, take 0.3 second. the prooperties in the case of the button for instance, is the `background` and the `color`. note that this does not do things that listens to event like `:hover`, but rather, this applies to changes that are *already* caused by things like `:hover`.  
+```
+    transition: background 0.6s;
+```
+see here, it specifies a particular property `background` to apply the transition to. 
+```
+    -webkit-transition: background 0.6s;
+    -moz-transition: background 0.6s;
+```
+this is for browser compatibility, nothing different in functionality. `transition` property is not built in to all browsers. 
+
+### lec174, 175
+get rid of this:
+<img src="https://www.dropbox.com/s/4w5fdcnsvjpdx1p/Screenshot%202018-05-01%2015.25.38.png?dl=0" width="400">
+this is what the browser did automatically. 
+```
+    font-weight: normal;
+```
+this does it.  
+```js
+    for(var i = 0; i < modeButtons.length; i++){
+        modeButtons[i].addEventListener("click", function(){
+            modeButtons[0].classList.remove("selected");
+            modeButtons[1].classList.remove("selected");
+            this.classList.add("selected");
+            this.textContent === "Easy" ? numSquares = 3: numSquares = 6;
+            reset();
+        });
+    }
+```
+note how he did this again: unconditionally reset any, then choose the one I want, then *set* that only. 这个反正是一个个人选择上的风格;  
+```js
+    for(var i = 0; i < squares.length; i++){
+        if(colors[i]){
+            squares[i].style.display = "block"
+            squares[i].style.background = colors[i];
+        } else {
+            squares[i].style.display = "none";
+        }
+    }
+```
+note here how uses the `colors[i]` to control what to do with `display`. this is not bad: mode defines the number of colors, then that defines each entry in `colors`, then use that to control the `display` property of each `squares[i]`.  
+why would that happen, because in the beginning of `reset`, we get the `colors` in this way:
+```js
+    colors = generateRandomColors(numSquares);
+```
+this only returns an array of 3 in easy mode, and when you access something like `colors[4]` which is out of bound, you get `undefined`:
+```js
+!!null
+false
+!!undefined
+false
+var ar = [1,2,3]
+undefined
+ar[4]
+undefined
+```
+这里老师上课的时候认为这里最后得到的是`null`, 实际上是错误的, 出界给的是`undefined`.  
+
+
+
+
+
+
+
+
+
+
 
 
 
