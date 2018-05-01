@@ -156,7 +156,7 @@ no type information.
 这个`slice`好像就是`substring`的意思; 然后`charAt`一样的. 
 <img src="https://www.dropbox.com/s/qcayhrxjm1ye06n/Screenshot%202018-04-30%2019.42.16.png?raw=1" width="400">
 so you can use `typeof`. 
-<img src="https://www.dropbox.com/s/klu893robnu1p5c/Screenshot%202018-04-30%2019.42.35.png?dl=0" width="500">
+<img src="https://www.dropbox.com/s/klu893robnu1p5c/Screenshot%202018-04-30%2019.42.35.png?raw=1" width="500">
 两种声明方式, 这个有点像OCaml那个, 第一种就是直接把函数名字放在signature里面, 第二种就是用一个assign an anonymous function to var的感觉; 注意他的解释, 一个是declaration, 一个是expression, 这样理解也是不错的; 
 
 <img src="https://www.dropbox.com/s/pln0b0tl50oge9e/Screenshot%202018-04-30%2019.47.35.png?raw=1" width="400">
@@ -400,7 +400,7 @@ obj.add (10, 5);
 ### lec144, 145, 148
 [http://underscorejs.org/](http://underscorejs.org/)
 
-<img src="https://www.dropbox.com/s/7rjvvtktv0w0yco/Screenshot%202018-05-01%2001.20.52.png?dl=0" width="400">
+<img src="https://www.dropbox.com/s/7rjvvtktv0w0yco/Screenshot%202018-05-01%2001.20.52.png?raw=1" width="400">
 note how now this anonymous function does not need argument anymore. 
 
 > As you begin working with the DOM you'll be writing some JavaScript code that selects HTML elements from the page and manipulates them.   
@@ -772,8 +772,36 @@ this is edge-triggered: so when you hover over it, it's not constantly firing. b
     });
 ```
 again, notice how we use class to manipulate properties instead of manually. this is especially useful in this case: you will need an *do* and an *undo* operation and class list just naturally handles that. also note how you constantly have to use `this` in the listener: it can also be seen like a pattern.  
-one minor thing, even you did not define `selected`, this would still result in the class being added/removed from the class list. the language does not check for that. 
+one minor thing, even you did not define `selected`, this would still result in the class being added/removed from the class list. the language does not check for that.  
+using class to manipulate css is also separation of concerns: css manages the styles, and js manages turning on or off parts of the css styles. 
+<img src="https://www.dropbox.com/s/qql3q6njscpj3ee/Screenshot%202018-05-01%2013.42.15.png?raw=1" width="400">
+test your results this way. you can see the item's class list changing dynamically as a response of your events. 
 
+### lec164, 165, 166, 167
+<img src="https://www.dropbox.com/s/73ag44xmqgl9w43/Screenshot%202018-05-01%2013.44.39.png?dl=0" width="400">
+count the number of even entries listed in the page. this is just selecting elements and counting. experiment with console first. first, find out how many tables there are:
+<img src="https://www.dropbox.com/s/m1eemsgtmamg4cs/Screenshot%202018-05-01%2013.45.16.png?dl=0" width="400">
+and figure out which of these tables you want. now we are sure that we want all `tr`s in all `table`s, so do:
+<img src="https://www.dropbox.com/s/u6k3rkuzrfx6qlb/Screenshot%202018-05-01%2013.46.02.png?dl=0" width="400">
+we have to exclude the `tr` for table headers. 
+<img src="https://www.dropbox.com/s/83v3a9o8wirjnkg/Screenshot%202018-05-01%2013.47.45.png?dl=0" width="400">
+
+> If you complete the exercise, but your color choice shows "Wrong" even when it is correct, then take a look at your colors array and make sure that the colors have spaces after the commas in the RGB expression, otherwise the picked color will not match the randomly selected color.
+
+这个空格就很烦人了; 
+
+> e.g.,  
+> Correct: "rgb(255, 0, 0)"  
+>   
+> Incorrect: "rgb(255,0,0)"  
+
+this is fun: https://stackoverflow.com/questions/5657964/css-why-doesn-t-percentage-height-work/5658062#5658062
+
+### lec168, 169
+[colorGame.html](colorGame.html), [colorGame.css](colorGame.css), [colorGame.js](colorGame.js)
+
+<img src="https://www.dropbox.com/s/mb2hxt6f2lhir1q/Screenshot%202018-05-01%2014.02.19.png?dl=0" width="400">
+所以这里是介绍了这两个的区别, 这个也是我之前一直疑惑的一个东西: 看起来一样的效果不过老师一会儿用这个一会儿用那个;
 
 
 
